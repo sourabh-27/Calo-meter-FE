@@ -40,6 +40,8 @@ const CommonLogin = (props) => {
     } else if (firstResponse.status === 200) {
       //user was already trying to login
       loginSuccessfullFlow(firstResponse);
+    }else{
+      alert("Incorrect username or password");
     }
   }
   function loginSuccessfullFlow(response) {
