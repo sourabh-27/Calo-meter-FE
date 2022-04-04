@@ -1,24 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import CommonLogin from "./Components/CommonLogin";
+import React, { useEffect, useState } from "react";
+import ShowItems from "./Components/ShowItems";
 
 function App() {
+  const [isSignUp, setIsSignUp] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userId, setUserId] = useState("");
+
+  function checkIfLoggedIn() {
+    const localStorageItem = JSON.parse(localStorage.getItem("userDetails"));
+    if (
+      localStorageItem &&
+      localStorageItem.userName &&
+      localStorageItem.tokenType &&
+      localStorageItem.accessToken &&
+      localStorageItem.userId
+    ) {
+      setUserId(localStorageItem.userId);
+      return true;
+    }
+    return false;
+  }
+
+  useEffect(() => {
+    setIsLoggedIn(checkIfLoggedIn());
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {!isLoggedIn && (
+        <div>
+          {isSignUp ?? (
+            <>
+              <button onClick={() => setIsSignUp(true)}>Sign Up </button>
+              <button onClick={() => setIsSignUp(false)}> Sign In</button>
+            </>
+          )}
+          {isSignUp !== null && (
+            <CommonLogin
+              isSignUp={isSignUp}
+              setIsSignUp={setIsSignUp}
+              setIsLoggedIn={setIsLoggedIn}
+            />
+          )}
+        </div>
+      )}
+      {isLoggedIn && (
+        <div>
+          <ShowItems setIsLoggedIn={setIsLoggedIn} userId={userId} />
+        </div>
+      )}
+    </>
   );
 }
 
