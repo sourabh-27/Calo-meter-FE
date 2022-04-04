@@ -21,7 +21,7 @@ async function trySignUp({ userName, password, targetCalories, email }) {
     full_name: userName,
   };
   return await postApiHelper({
-    url: "http://ec2-54-174-33-237.compute-1.amazonaws.com:8000/api/cm/v1/users/open",
+    url: "http://18.211.125.105:8000/api/cm/v1/users/open",
     payload,
   });
 }
@@ -36,7 +36,7 @@ async function trySignIn({ email, password }) {
     },
   };
   return await postApiHelper({
-    url: "http://ec2-54-174-33-237.compute-1.amazonaws.com:8000/api/cm/v1/login/access-token",
+    url: "http://18.211.125.105:8000/api/cm/v1/login/access-token",
     payload,
     config,
   });
@@ -49,7 +49,7 @@ export function fetchDetailsFromLocalHost(key) {
 export async function getItemsApi() {
   const lhItem = fetchDetailsFromLocalHost("userDetails");
   return await getApiHelper({
-    url: "http://ec2-54-174-33-237.compute-1.amazonaws.com:8000/api/cm/v1/items/?skip=0&limit=100",
+    url: "http://18.211.125.105:8000/api/cm/v1/items/?skip=0&limit=100",
     config: {
       headers: {
         Authorization: `Bearer ${lhItem.accessToken}`,
@@ -61,7 +61,7 @@ export async function getItemsApi() {
 export async function addItemApi(item) {
   const lhItem = fetchDetailsFromLocalHost("userDetails");
   return await postApiHelper({
-    url: "http://ec2-54-174-33-237.compute-1.amazonaws.com:8000/api/cm/v1/items/",
+    url: "http://18.211.125.105:8000/api/cm/v1/items/",
     config: {
       headers: {
         Authorization: `Bearer ${lhItem.accessToken}`,
@@ -74,7 +74,7 @@ export async function addItemApi(item) {
 export async function updateItemApi(item) {
   const lhItem = fetchDetailsFromLocalHost("userDetails");
   return await putApiHelper({
-    url: `http://ec2-54-174-33-237.compute-1.amazonaws.com:8000/api/cm/v1/items/${item.id}`,
+    url: `http://18.211.125.105:8000/api/cm/v1/items/${item.id}`,
     config: {
       headers: {
         Authorization: `Bearer ${lhItem.accessToken}`,
@@ -87,7 +87,7 @@ export async function updateItemApi(item) {
 export async function deleteItemApi(id) {
   const lhItem = fetchDetailsFromLocalHost("userDetails");
   return await deleteApiHelper({
-    url: `http://ec2-54-174-33-237.compute-1.amazonaws.com:8000/api/cm/v1/items/${id}`,
+    url: `http://18.211.125.105:8000/api/cm/v1/items/${id}`,
     config: {
       headers: {
         Authorization: `Bearer ${lhItem.accessToken}`,
