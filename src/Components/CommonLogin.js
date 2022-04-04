@@ -59,7 +59,7 @@ const CommonLogin = (props) => {
     props.setIsLoggedIn(true);
   }
   return (
-    <>
+    <div style={{ marginLeft: "40%", marginTop: "14%" }}>
       <h1>Ready to Sign {componentBasedText}</h1>
       <h2>Your email will be your username</h2>
       <div>
@@ -100,7 +100,7 @@ const CommonLogin = (props) => {
       >
         Go to Sign {reverseComponentBasedText}{" "}
       </button>
-    </>
+    </div>
   );
 };
 

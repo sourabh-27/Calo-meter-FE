@@ -33,8 +33,8 @@ function App() {
         <div>
           {isSignUp ?? (
             <>
-              <button onClick={() => setIsSignUp(true)}>Sign Up </button>
-              <button onClick={() => setIsSignUp(false)}> Sign In</button>
+              <button style={{marginTop: "25%", marginLeft: "45%", fontSize: "25px"}} onClick={() => setIsSignUp(true)}>Sign Up </button>
+              <button style={{fontSize: "25px"}} onClick={() => setIsSignUp(false)}> Sign In</button>
             </>
           )}
           {isSignUp !== null && (

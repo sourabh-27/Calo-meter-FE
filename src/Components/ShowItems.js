@@ -62,7 +62,7 @@ export default function ShowItems(props) {
 
   return (
     <>
-      <button onClick={() => setCreateItemMode(true)}>Create an Item</button>
+      <button style={{ display: "flex", marginLeft: "43%", marginBottom: "2%", marginTop: "2%", fontSize: "17px"}} onClick={() => setCreateItemMode(true)}>Create an Item</button>
       {createItemMode && (
         <div>
           <input
